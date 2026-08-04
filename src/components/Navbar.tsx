@@ -30,7 +30,7 @@ export default function Navbar() {
                 <span className="w-2 h-2 rounded-full bg-cyan" />
               </span>
               <span className="display font-bold text-lg tracking-tight">
-                AGE<span className="text-cyan-dim">LED</span>
+                DOS<span className="text-cyan-dim">LED</span>
               </span>
             </Link>
 
