@@ -16,7 +16,7 @@ import Footer from "@/components/Footer";
 import RequestModalProvider from "@/components/RequestModalProvider";
 
 export const metadata: Metadata = {
-  title: "AGE LED — Светодиодные экраны в Астане",
+  title: "DOSLED — Светодиодные экраны | Казахстан",
   description:
     "Наружные, внутренние, арендные, COB, напольные, спортивные и прозрачные LED-экраны. Продажа, монтаж, рассрочка и trade-in в Астане.",
 };
