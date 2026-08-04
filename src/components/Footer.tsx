@@ -43,7 +43,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
-          <span>© {new Date().getFullYear()} AGE Consulting. Все права защищены.</span>
+          <span>© {new Date().getFullYear()} DOSLED.com | Все права защищены.</span>
           <span>{site.email}</span>
         </div>
       </div>
