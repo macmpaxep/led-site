@@ -26,12 +26,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="h-16 flex items-center gap-6">
             <Link href="/" className="flex items-center gap-2 shrink-0">
-              <span className="w-9 h-9 rounded-md bg-navy pixel-grid flex items-center justify-center">
-                <span className="w-2 h-2 rounded-full bg-cyan" />
-              </span>
-              <span className="display font-bold text-lg tracking-tight">
-                DOS<span className="text-cyan-dim">LED</span>
-              </span>
+              <img src="/logo.png" alt="AGE LED" className="h-10 w-auto object-contain" />
             </Link>
 
             <form
