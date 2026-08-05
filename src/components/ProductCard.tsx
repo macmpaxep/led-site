@@ -7,7 +7,7 @@ export default function ProductCard({ product }: { product: Product }) {
       <Link href={`/product/${product.slug}`} className="block">
         <div className="relative aspect-[4/3] overflow-hidden bg-navy">
   <img
-    src={`/products/${product.slug}.jpg`}
+    src={`/products/${product.slug}.webp`}
     alt={product.name}
     className="w-full h-full object-cover"
     onError={(e) => {
