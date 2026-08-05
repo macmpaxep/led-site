@@ -5,6 +5,7 @@ import { products, productBySlug, productsByCategory } from "@/data/products";
 import { categoryBySlug } from "@/data/categories";
 import ProductCard from "@/components/ProductCard";
 import ProductRequestButton from "@/components/ProductRequestButton";
+import ProductImage from "@/components/ProductImage";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -52,12 +53,7 @@ export default async function ProductPage({
       </div>
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 pb-16 grid lg:grid-cols-2 gap-10">
-        <div className="relative aspect-[4/3] rounded-2xl pixel-grid bg-navy overflow-hidden scanline">
-          <div className="absolute inset-0 bg-gradient-to-br from-navy/10 via-transparent to-navy/70" />
-          <div className="absolute bottom-4 left-4 mono text-xs text-cyan bg-navy/70 rounded px-2.5 py-1.5">
-            {product.pixelPitch}
-          </div>
-        </div>
+        <ProductImage slug={product.slug} name={product.name} pixelPitch={product.pixelPitch} />
 
         <div>
           <p className="mono text-[11px] tracking-[0.2em] uppercase text-cyan-dim mb-2">
