@@ -41,7 +41,7 @@ export default function ProductCard({ product }: { product: Product }) {
         </h3>
         <p className="text-xs text-slate line-clamp-2">{product.application}</p>
         <div className="mt-auto pt-3 flex items-center justify-between">
-          <span className="mono text-[11px] text-slate">{product.brightness.split("–")[0]}+</span>
+          <span className="mono text-[11px] text-slate">{product.brightness.split("–")[0]}</span>
           <Link
             href={`/product/${product.slug}`}
             className="text-xs font-semibold text-cyan-dim hover:text-navy transition inline-flex items-center gap-1"
