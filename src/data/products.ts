@@ -511,7 +511,7 @@ export const products: Product[] = [
     ],
   },
   {
-    slug: 'c-4-3-h',
+    slug: 'c-43h',
     category: 'indoor',
     name: 'C series 4:3H',
     pixelPitch: 'P1.25-P1.86',
@@ -532,7 +532,7 @@ export const products: Product[] = [
     ],
   },
   {
-    slug: 'c-4-3-h-1',
+    slug: 'c-43h1',
     category: 'indoor',
     name: 'C series 4:3H (1)',
     pixelPitch: 'P2.0–P3.076',
