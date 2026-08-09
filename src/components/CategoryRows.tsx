@@ -7,7 +7,7 @@ export default function CategoryRows() {
   return (
     <section className="max-w-7xl mx-auto px-4 lg:px-8 py-4 space-y-16">
       {categories.map((c) => {
-        const items = productsByCategory(c.slug).slice(0, 4);
+        const items = productsByCategory(c.slug).slice(0, isMobile ? 4 : 5);
         if (items.length === 0) return null;
         return (
           <div key={c.slug}>
