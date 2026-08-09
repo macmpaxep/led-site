@@ -18,7 +18,7 @@ export async function generateMetadata({
   const category = categoryBySlug(slug);
   if (!category) return {};
   return {
-    title: `${category.title} — AGE LED`,
+    title: `${category.title} — DOSLED`,
     description: category.intro,
   };
 }
