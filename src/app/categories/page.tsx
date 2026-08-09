@@ -6,7 +6,7 @@ import { categories } from "@/data/categories";
 import { productsByCategory } from "@/data/products";
 
 export const metadata: Metadata = {
-  title: "Категории LED-экранов — AGE LED",
+  title: "Категории LED-экранов — DOSLED",
   description: "Полный каталог светодиодных экранов по всем категориям.",
 };
 
