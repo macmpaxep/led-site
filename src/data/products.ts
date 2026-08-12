@@ -785,7 +785,7 @@ export const products: Product[] = [
   },
   {
     slug: 'oh-hub-500-500',
-    category: 'indoor','outdoor',
+    category: 'indoor, outdoor',
     name: 'OH(Hub connection)',
     pixelPitch: 'P1.5-P3.9',
     brightness: '',
