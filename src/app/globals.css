@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #06121f;
-  --navy-2: #0c1f33;
-  --panel: #102a43;
-  --cyan: #00c2ff;
-  --cyan-dim: #0090c2;
-  --amber: #ffb000;
+  --navy: #6b0202;
+  --navy-2: #cba99c;
+  --panel: #5c0606;
+  --cyan: #d6cfcf;
+  --cyan-dim: #8B1A1A;
+  --amber: #111110;
   --mist: #f4f7fa;
-  --slate: #5b6b7c;
-  --line: #1c3550;
+  --slate: #0e0e0d;
+  --line: #d8cfcc;
 }
 
 @theme inline {
