@@ -89,10 +89,10 @@ export default function HeroSlider() {
             >
               {s.eyebrow}
             </p>
-            <h1 className="display text-white text-3xl md:text-5xl font-bold leading-[1.1] mb-5">
-              {s.title}
+            <h1 className="display text-3xl md:text-5xl font-bold leading-[1.1] mb-5">
+              style={{ color: "#6b0202" }} {s.title}
             </h1>
-            <p className="text-white/70 text-base md:text-lg mb-8 max-w-xl">{s.text}</p>
+            <p className="text-black/70 text-base md:text-lg mb-8 max-w-xl">{s.text}</p>
             <button
               onClick={() => open()}
               className="inline-flex items-center gap-2 font-semibold px-6 py-3.5 rounded-full text-white transition hover:opacity-90"
