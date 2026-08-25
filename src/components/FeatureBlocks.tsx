@@ -42,7 +42,6 @@ function QualityBlock() {
 }
 
 function HotDealsBlock() {
-  // Editable "hot deals": pick any 3 real products at random from the catalog.
   const picks = useMemo(() => randomPicks(products, 3), []);
   const [items, setItems] = useState<Product[]>(picks);
 
@@ -51,37 +50,68 @@ function HotDealsBlock() {
   }
 
   return (
-    <div className="rounded-2xl border border-line/15 bg-white p-7 flex flex-col">
-      <div className="flex items-center justify-between mb-5">
-        <div className="w-11 h-11 rounded-lg bg-amber/15 flex items-center justify-center">
-          <FireIcon />
+    <div className="rounded-2xl border overflow-hidden relative" style={{ borderColor: "#c9a0a0" }}>
+      
+      {/* Фоновая картинка 40% прозрачности */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/works/work-04.jpg"
+        alt=""
+        aria-hidden
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ opacity: 0.4 }}
+      />
+
+      {/* Тёмный оверлей поверх фото */}
+      <div
+        className="absolute inset-0"
+        style={{ background: "rgba(74,14,14,0.75)" }}
+      />
+
+      {/* Контент */}
+      <div className="relative z-10 p-7 flex flex-col h-full">
+        <div className="flex items-center justify-between mb-5">
+          <div
+            className="w-11 h-11 rounded-lg flex items-center justify-center"
+            style={{ background: "rgba(243,156,18,0.2)" }}
+          >
+            <FireIcon />
+          </div>
+          <button
+            onClick={reroll}
+            className="text-xs font-medium flex items-center gap-1 transition"
+            style={{ color: "rgba(255,255,255,0.6)" }}
+            onMouseEnter={e => (e.currentTarget.style.color = "#ffffff")}
+            onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
+            title="Обновить подборку"
+          >
+            <RefreshIcon />
+            обновить
+          </button>
         </div>
-        <button
-          onClick={reroll}
-          className="text-xs font-medium text-slate hover:text-cyan-dim transition flex items-center gap-1"
-          title="Обновить подборку"
-        >
-          <RefreshIcon />
-          обновить
-        </button>
+        <h3 className="font-bold text-lg mb-2" style={{ color: "#ffffff", fontFamily: "var(--font-display)" }}>
+          Горячие предложения
+        </h3>
+        <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.6)" }}>
+          Подборка обновляется — нажмите «обновить» или выберите товары вручную.
+        </p>
+        <ul className="space-y-3">
+          {items.map((p) => (
+            <li key={p.slug}>
+              <Link
+                href={`/product/${p.slug}`}
+                className="flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 transition"
+                style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)" }}
+                onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.15)")}
+                onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
+              >
+                <span className="text-sm font-medium truncate" style={{ color: "#ffffff" }}>{p.name}</span>
+                <span className="text-[11px] shrink-0" style={{ color: "#f39c12", fontFamily: "monospace" }}>{p.pixelPitch}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
-      <h3 className="display font-bold text-lg mb-2">Горячие предложения</h3>
-      <p className="text-slate text-sm leading-relaxed mb-4">
-        Подборка можно менять — нажмите «обновить» или замените товары вручную в карточках категорий.
-      </p>
-      <ul className="space-y-3">
-        {items.map((p) => (
-          <li key={p.slug}>
-            <Link
-              href={`/product/${p.slug}`}
-              className="flex items-center justify-between gap-3 rounded-lg border border-line/10 px-3 py-2.5 hover:border-cyan/40 hover:bg-mist transition"
-            >
-              <span className="text-sm font-medium truncate">{p.name}</span>
-              <span className="mono text-[11px] text-cyan-dim shrink-0">{p.pixelPitch}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
