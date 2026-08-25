@@ -24,8 +24,17 @@ const slides = [
   },
 ];
 
+// Все цвета — явные hex, без var()
+const C = {
+  bg:       "#4a0e0e",   // самый тёмный красный — фон секции
+  red:      "#c0392b",   // кнопка
+  redHover: "#e74c3c",   // hover кнопки
+  amber:    "#f39c12",   // надтекст eyebrow
+};
+
 export default function HeroSlider() {
   const [active, setActive] = useState(0);
+  const [hovered, setHovered] = useState(false);
   const { open } = useRequestModal();
 
   useEffect(() => {
@@ -34,9 +43,11 @@ export default function HeroSlider() {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden scanline" style={{ background: "var(--crimson-3)" }}>
-
-      {/* Фоновые картинки каждого слайда */}
+    <section
+      className="relative w-full overflow-hidden"
+      style={{ background: C.bg }}
+    >
+      {/* Фоновые фото — переключаются через opacity */}
       {slides.map((s, i) => (
         <div
           key={i}
@@ -49,54 +60,80 @@ export default function HeroSlider() {
             src={s.image}
             alt=""
             className="w-full h-full object-cover"
-            style={{ opacity: 0.4 }}
+            style={{ opacity: 0.45 }}
           />
         </div>
       ))}
 
-      {/* Градиент для читаемости текста слева */}
+      {/* Градиент слева — тёмный фон для текста */}
       <div
         className="absolute inset-0 z-[1]"
         style={{
-          background:
-            "linear-gradient(to right, var(--crimson-3) 30%, rgba(74,14,14,0.6) 65%, transparent 100%)",
+          background: `linear-gradient(
+            to right,
+            ${C.bg}ee 0%,
+            ${C.bg}cc 30%,
+            ${C.bg}66 60%,
+            transparent 100%
+          )`,
         }}
       />
 
-      {/* Пиксельная текстура */}
-      <div className="pixel-grid pixel-grid-fade absolute inset-0 z-[2] opacity-25" />
-
-      {/* Декоративное свечение */}
+      {/* Нижний градиент — плавный переход к контенту под слайдером */}
       <div
-        className="absolute -right-24 top-1/2 -translate-y-1/2 w-[520px] h-[520px] rounded-full blur-3xl z-[2]"
-        style={{ background: "rgba(192,57,43,0.2)" }}
+        className="absolute bottom-0 left-0 right-0 h-24 z-[1]"
+        style={{
+          background: `linear-gradient(to bottom, transparent, ${C.bg})`,
+        }}
       />
 
-      {/* Текст слайдов */}
+      {/* Пиксельная текстура поверх */}
+      <div
+        className="absolute inset-0 z-[2]"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1.4px)",
+          backgroundSize: "14px 14px",
+          maskImage: "radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 90%)",
+          WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 90%)",
+        }}
+      />
+
+      {/* Контент */}
       <div className="relative z-[3] max-w-7xl mx-auto px-4 lg:px-8 py-20 md:py-28 min-h-[420px] flex items-center">
         {slides.map((s, i) => (
           <div
             key={i}
-            className={`absolute inset-x-4 lg:inset-x-8 max-w-2xl transition-all duration-700 ${
-              i === active
-                ? "opacity-100 translate-y-0 pointer-events-auto"
-                : "opacity-0 translate-y-4 pointer-events-none"
-            }`}
+            className="absolute inset-x-4 lg:inset-x-8 max-w-2xl transition-all duration-700"
+            style={{
+              opacity: i === active ? 1 : 0,
+              transform: i === active ? "translateY(0)" : "translateY(16px)",
+              pointerEvents: i === active ? "auto" : "none",
+            }}
           >
             <p
-              className="mono text-xs tracking-[0.25em] uppercase mb-4 font-medium"
-              style={{ color: "#f39c12" }}
+              className="mono text-xs tracking-[0.25em] uppercase mb-4 font-semibold"
+              style={{ color: C.amber }}
             >
               {s.eyebrow}
             </p>
-            <h1 className="display text-3xl md:text-5xl font-bold leading-[1.1] mb-5">
-              style={{ color: "#6b0202" }} {s.title}
+            <h1
+              className="display text-3xl md:text-5xl font-bold leading-[1.1] mb-5"
+              style={{ color: "#ffffff" }}
+            >
+              {s.title}
             </h1>
-            <p className="text-black/70 text-base md:text-lg mb-8 max-w-xl">{s.text}</p>
+            <p className="text-base md:text-lg mb-8 max-w-xl" style={{ color: "rgba(255,255,255,0.72)" }}>
+              {s.text}
+            </p>
             <button
               onClick={() => open()}
-              className="inline-flex items-center gap-2 font-semibold px-6 py-3.5 rounded-full text-white transition hover:opacity-90"
-              style={{ background: "var(--red)" }}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+              className="inline-flex items-center gap-2 font-semibold px-6 py-3.5 rounded-full transition-all duration-200"
+              style={{
+                background: hovered ? C.redHover : C.red,
+                color: "#ffffff",
+              }}
             >
               Оставить заявку
               <span aria-hidden>→</span>
@@ -105,16 +142,18 @@ export default function HeroSlider() {
         ))}
       </div>
 
-      {/* Точки навигации */}
+      {/* Точки-навигация */}
       <div className="relative z-[3] flex justify-center gap-2 pb-8">
         {slides.map((_, i) => (
           <button
             key={i}
             aria-label={`Слайд ${i + 1}`}
             onClick={() => setActive(i)}
-            className={`h-1.5 rounded-full transition-all ${
-              i === active ? "w-8 bg-white" : "w-4 bg-white/30"
-            }`}
+            className="h-1.5 rounded-full transition-all duration-300"
+            style={{
+              width: i === active ? "2rem" : "1rem",
+              background: i === active ? "#ffffff" : "rgba(255,255,255,0.3)",
+            }}
           />
         ))}
       </div>
