@@ -2,7 +2,7 @@ export type Product = {
   slug: string; category: string; name: string;
   pixelPitch: string; brightness: string; refreshRate: string;
   ipRating: string; cabinetSize: string; weight: string;
-  application: string; description: string;
+  application: string; description: string; bullets: string[];
 };
 
 export const products: Product[] = [
@@ -11,13 +11,21 @@ export const products: Product[] = [
     category: 'outdoor',
     name: 'FA Series',
     pixelPitch: 'P3.91–P10.4',
-    brightness: '6 5000-7 000 нит+',
+    brightness: '6 000-7 000 нит+',
     refreshRate: '3840 Гц',
     ipRating: 'IP65',
     cabinetSize: '~1000×1000 мм',
     weight: '40 кг/м²',
     application: 'фасады, билборды, АЗС, стадионы, наружная реклама',
-    description: 'FA Series — А светодиодный экран с шагом пикселя P3.91–P10.4, разработанный для задач: фасады, билборды, АЗС, стадионы, наружная реклама. Уличное решение с герметичным литым корпусом, рассчитанное на непрерывную работу в диапазоне от −20°C до +60°C.',
+    description: 'FA Series — светодиодный экран с шагом пикселя P3.91–P10.4, разработанный для задач: фасады, билборды, АЗС, стадионы, наружная реклама. Уличное решение с герметичным литым корпусом, рассчитанное на непрерывную работу в диапазоне от −20°C до +60°C.',
+    bullets: [
+      'Шаг пикселя: P3.91–P10.4',
+      'Яркость: 6 000-7 000 нит+',
+      'Частота обновления: 3840 Гц',
+      'Класс защиты: IP65',
+      'Размер кабинета: ~1000×1000 мм',
+      'Вес конструкции: 40 кг/м²',
+    ],
   },
   {
     slug: 'fm-series',
