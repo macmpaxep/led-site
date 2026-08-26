@@ -11,7 +11,7 @@ export const products: Product[] = [
     category: 'outdoor',
     name: 'FA Series',
     pixelPitch: 'P3.91–P10.4',
-    brightness: '6 000-7 000 нит+',
+    brightness: '6 5000-7 000 нит+',
     refreshRate: '3840 Гц',
     ipRating: 'IP65',
     cabinetSize: '~1000×1000 мм',
