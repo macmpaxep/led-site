@@ -2,7 +2,7 @@ export type Product = {
   slug: string; category: string; name: string;
   pixelPitch: string; brightness: string; refreshRate: string;
   ipRating: string; cabinetSize: string; weight: string;
-  application: string; description: string; bullets: string[];
+  application: string; description: string;
 };
 
 export const products: Product[] = [
